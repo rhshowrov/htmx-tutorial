@@ -11,6 +11,8 @@ def index(request):
 
 
 def search_contacts(request):
+    import time
+    time.sleep(2)
     serach_text=request.GET.get('search','')
     contacts=request.user.contacts.filter(Q(name__icontains=serach_text) | Q(email__icontains=serach_text))
     return render(request,'contacts/partials/contacts-list.html',context={
