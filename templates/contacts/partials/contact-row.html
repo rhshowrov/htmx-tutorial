@@ -4,6 +4,13 @@
   <!-- date Time Formate -->
   <td>{{ contact.created_at|date:"M d, Y" }}</td>
   <td>
+    {%if contact.document %}
+    <a href='{{contact.document.url}}' target="_blank" class="btn btn-xs btn-ghost">Download</a>
+    {%else%}
+    <span class="text-red-500">No Document</span>
+    {%endif%}
+  </td>
+  <td>
     <button class="btn btn-xs btn-error">Delete</button>
   </td>
 </tr>

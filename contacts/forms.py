@@ -14,6 +14,12 @@ class ContactForm(forms.ModelForm):
             'placeholder':'Contact Email'
         })
     )
+
+    document=forms.FileField(
+        widget=forms.FileInput(attrs={
+            'class':'file-input file-input-info w-full',          
+        }),required=False
+    )
     
     def clean_name(self):
         name=self.cleaned_data['name']
@@ -29,4 +35,4 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model=Contact
-        fields=('name','email')
+        fields=('name','email','document')

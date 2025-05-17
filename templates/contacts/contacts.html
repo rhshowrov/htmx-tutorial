@@ -1,9 +1,11 @@
 {% extends 'base.html'%} {%block title%}Contacts{%endblock%} {%block content%}
-<div>
+<div class="w-full">
   <h1 class="text-4xl font-bold text-success mt-3 text-center">
     Contacts Manager
   </h1>
+
   {%include 'contacts/partials/add-contact-modal.html' %}
+
   <div class="flex justify-between">
     <label class="input mt-3 w-1/3 mb-1 border-2 border-indigo-500/100">
       <svg
@@ -50,10 +52,10 @@
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded',()=>{
-    document.addEventListener('fail',()=>{
-      document.getElementById('contact_modal').showModal();
-    })
-  })
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("fail", () => {
+      document.getElementById("contact_modal").showModal();
+    });
+  });
 </script>
 {%endblock%}
