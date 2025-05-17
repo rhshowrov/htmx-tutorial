@@ -49,4 +49,11 @@
     {% include 'contacts/partials/contacts-list.html' %}
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.addEventListener('fail',()=>{
+      document.getElementById('contact_modal').showModal();
+    })
+  })
+</script>
 {%endblock%}
