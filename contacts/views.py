@@ -4,6 +4,8 @@ from .models import Contact
 from django.db.models import Q
 from .forms import ContactForm
 from django.views.decorators.http import require_http_methods
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 # Create your views here.
 @login_required
 def index(request):
@@ -40,3 +42,13 @@ def create_contact(request):
         response['HX-Reswap']='outerHTML'
         response['HX-Trigger-After-Settle'] = 'fail'
         return response
+    
+@require_http_methods(['DELETE'])
+@login_required
+def delete_contact(request,pk):
+    contact=get_object_or_404(Contact,pk=pk,user=request.user)
+    contact.delete()
+    response=HttpResponse(status=204)
+    response['HX-Trigger']='contact-deleted'
+    return response
+

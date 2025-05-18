@@ -11,6 +11,11 @@
     {%endif%}
   </td>
   <td>
-    <button class="btn btn-xs btn-error">Delete</button>
+    <button class="btn btn-xs btn-error" 
+    hx-delete="{% url 'contacts:delete_contact' pk=contact.pk %}"
+    hx-on:contact-deleted="this.closest('tr').remove();"
+    hx-confirm="Are you sure to delete this contact?"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    >Delete</button>
   </td>
 </tr>
